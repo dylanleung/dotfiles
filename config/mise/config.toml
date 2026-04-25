@@ -5,8 +5,12 @@ node = "latest"
 rust = "latest"
 zig = "latest"
 
+[settings]
 # ~/.config/mise/config.toml
-trusted_config_paths = [
-    "~/.dotfiles",
-    "~/.config/mise/config.toml"
-]
+trusted_config_paths = ["~/.dotfiles", "~/.config/mise/config.toml"]
+
+env_shell_expand = false
+
+[env]
+ANTHROPIC_AUTH_TOKEN = 'exec:security find-generic-password -a "$USER" -s "anthropic_auth_token" -w'
+GITHUB_TOKEN = 'exec:security find-generic-password -a "$USER" -s "GITHUB_TOKEN" -w'

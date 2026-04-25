@@ -2,9 +2,10 @@ export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
 
 
 
+zstyle ':zim:zmodule' use 'degit'
+
 ZIM_CONFIG_FILE=~/.config/zsh/zimrc
 
-zstyle ':zim:zmodule' use 'degit'
 
 ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Install missing modules and update ${ZIM_HOME}/init.zsh if missing or outdated.
@@ -42,7 +43,7 @@ alias rga='rg -uuu'
 alias tscp="termscp"
 
 # 重载配置文件
-alias rr="source ~/.zshrc"
+alias rr="exec zsh"
 
 eval "$(mcfly init zsh)"
 
