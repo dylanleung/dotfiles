@@ -1,11 +1,8 @@
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
 
-
-
 zstyle ':zim:zmodule' use 'degit'
 
 ZIM_CONFIG_FILE=~/.config/zsh/zimrc
-
 
 ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Install missing modules and update ${ZIM_HOME}/init.zsh if missing or outdated.
@@ -39,21 +36,12 @@ alias fda='fd -IH'
 alias rga='rg -uuu'
 
 
-
 alias tscp="termscp"
 
 # 重载配置文件
 alias rr="exec zsh"
 
 eval "$(mcfly init zsh)"
-
-
-
-
-export API_TIMEOUT_MS=600000
-
-
-
 
 
 source /Users/dylan/.config/broot/launcher/bash/br
