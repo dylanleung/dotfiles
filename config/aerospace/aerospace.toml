@@ -1,0 +1,153 @@
+
+# -*- mode: conf-toml; -*-
+# AeroSpace 0.20.3-Beta 最终稳定配置
+# 适用于：MacBook Pro 14" + Dell 27" 双显示器
+# 应用：Alacritty, VS Code, Chrome, Logseq
+# 冲突避免：Raycast (Cmd+Space), Bob (Opt+Cmd+B), 系统截图 (Cmd+Shift+4/5)
+
+# ==========================================
+# 1. 基础版本与行为
+# ==========================================
+config-version = 1
+start-at-login = true
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+accordion-padding = 30
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# ==========================================
+# 2. 窗口间隙
+# ==========================================
+[gaps]
+inner.horizontal = 8
+inner.vertical = 8
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
+
+# ==========================================
+# 3. 键盘映射
+# ==========================================
+[key-mapping]
+preset = 'qwerty'
+
+# ==========================================
+# 4. 快捷键绑定（无冲突版）
+# ==========================================
+[mode.main.binding]
+
+# --- 4.1 一键启动应用并切换到工作区（数组形式）---
+alt-a = [
+    'exec-and-forget open -a "Visual Studio Code"',
+    'workspace A',
+]
+alt-s = [
+    'exec-and-forget open -a Alacritty',
+    'workspace S',
+]
+alt-d = [
+    'exec-and-forget open -a Logseq',
+    'workspace D',
+]
+alt-f = [
+    'exec-and-forget open -a "Google Chrome"',
+    'workspace F',
+]
+
+# --- 4.2 仅切换工作区（使用 Alt+Shift+字母，避免与移动窗口冲突）---
+# 注意：Alt+Shift+A 原本用于“移动窗口到工作区 A”，这里改用 Alt+Ctrl+A 作为纯切换
+# 如果你更习惯 Alt+Shift，可以保留原移动功能，另选其他组合。以下提供 Alt+Ctrl 方案。
+alt-ctrl-a = 'workspace A'
+alt-ctrl-s = 'workspace S'
+alt-ctrl-d = 'workspace D'
+alt-ctrl-f = 'workspace F'
+
+# 额外数字工作区（仅切换）
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+
+# --- 4.3 移动当前窗口到指定工作区 ---
+alt-shift-a = 'move-node-to-workspace A'
+alt-shift-s = 'move-node-to-workspace S'
+alt-shift-d = 'move-node-to-workspace D'
+alt-shift-f = 'move-node-to-workspace F'
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+
+# --- 4.4 窗口焦点移动（Vim 风格）---
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# --- 4.5 同一工作区内移动窗口位置 ---
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+alt-shift-enter = '''exec-and-forget ~/.bin/setup_dev_env.sh'''
+
+# --- 4.6 布局模式切换 ---
+# 循环切换平铺/手风琴/浮动
+alt-slash = 'layout tiles horizontal vertical accordion'
+# 直接切换到平铺
+alt-ctrl-t = 'layout tiles'
+# 直接切换到浮动（0.20.3-Beta 中 layout floating 有效，后面不加 tiling）
+alt-ctrl-g = 'layout floating'
+
+# --- 4.7 窗口大小调整 ---
+alt-minus = 'resize smart -100'
+alt-equal = 'resize smart +100'
+
+# --- 4.8 窗口关闭与树清理 ---
+alt-q = 'close'
+alt-shift-c = 'close-all-windows-but-current'
+alt-r = 'flatten-workspace-tree'
+
+# --- 4.9 最近工作区切换与配置重载 ---
+alt-tab = 'workspace-back-and-forth'
+alt-shift-r = 'reload-config'
+
+# --- 4.10 跨显示器移动窗口 ---
+alt-shift-period = 'move-node-to-monitor next'
+alt-shift-comma = 'move-node-to-monitor prev'
+
+# ==========================================
+# 5. 窗口自动检测与布局规则
+# ==========================================
+[[on-window-detected]]
+if.app-name-regex-substring = 'Code'
+run = ['layout tiles', 'move-node-to-workspace A']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Alacritty'
+run = ['layout tiles', 'move-node-to-workspace S']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Logseq'
+run = ['layout floating', 'move-node-to-workspace D']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Google Chrome'
+run = ['layout floating', 'move-node-to-workspace F']
+
+# ==========================================
+# 6. 可选：工作区绑定到显示器（取消注释并修改数字）
+# ==========================================
+[workspace-to-monitor-force-assignment]
+ "A" = 1
+ "S" = 2
+ "D" = 2
+ "F" = 1

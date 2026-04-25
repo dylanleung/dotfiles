@@ -1,0 +1,24 @@
+zmodule z-shell/F-Sy-H
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-autosuggestions
+zmodule utility
+zmodule environment
+zmodule input
+
+
+zmodule git
+zmodule git-info
+zmodule duration-info
+
+
+zmodule exa
+zmodule prompt-pwd
+zmodule asciiship
+
+zmodule homebrew
+
+zmodule kiesman99/zim-zoxide
+zmodule joke/zim-mise
+
+zmodule zsh-users/zsh-completions --fpath src
+zmodule completion

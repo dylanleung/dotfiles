@@ -1,0 +1,56 @@
+# Mole Cleanup Preview - 2026-03-18 14:40:13
+#
+# How to protect files:
+# 1. Copy any path below to ~/.config/mole/whitelist
+# 2. Run: mo clean --whitelist
+#
+# Example:
+#   /Users/*/Library/Caches/com.example.app
+#
+
+
+=== User essentials ===
+/Users/dylan/Library/Caches  # 56.1MB, 5 items
+/Users/dylan/Library/Logs/LemonMonitor.log  # 1KB
+
+=== App caches ===
+/Users/dylan/Library/Application Support/com.apple.wallpaper/aerials/videos  # 4.37GB, 10 items
+
+=== Browsers ===
+/Users/dylan/Library/Caches/Google/Chrome/Default  # 1.7MB
+/Users/dylan/Library/Application Support/Google/GoogleUpdater/crx_cache/metadata.json  # 1KB
+/Users/dylan/Library/Application Support/Google/GoogleUpdater/updater.log.old  # 1.0MB
+
+=== Cloud & Office ===
+
+=== Developer tools ===
+/Users/dylan/Library/Application Support/Code/Cache/Cache_Data  # 16KB
+/Users/dylan/Library/Caches/Homebrew  # 54.3MB, 2 items
+
+=== Applications ===
+/Users/dylan/Library/Application Support/Code/Cache/Cache_Data  # 16KB
+
+=== Virtualization ===
+
+=== Application Support ===
+
+=== Orphaned data ===
+
+=== Apple Silicon updates ===
+
+=== Device backups ===
+
+=== Time Machine ===
+
+=== Large files ===
+
+=== System Data clues ===
+
+=== Project artifacts ===
+
+# ============================================
+# Summary
+# ============================================
+# Potential cleanup: 4.49GB
+# Items: 27
+# Categories: 11

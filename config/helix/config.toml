@@ -1,0 +1,26 @@
+theme = "ttox"
+
+[editor]
+idle-timeout = 0
+# 行号模式: 'absolute' (绝对行号)， 'relative' (相对行号)， 'line-number' 等多种选项
+line-number = "relative"
+# 鼠标支持
+mouse = true
+
+
+
+[keys.normal]
+"C-s" =":w"
+"Z" = { "Z" = ":wq" }
+"X" = ["extend_line_up", "extend_to_line_bounds"]
+"A-j" = [ "extend_to_line_bounds", "delete_selection", "paste_after" ]
+"A-k" = [ "extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before" ]
+"A-J" = [ "extend_to_line_bounds", "yank", "paste_after" ]
+"A-K" = [ "extend_to_line_bounds", "yank", "paste_before" ]
+"H" = "goto_previous_buffer"
+"L" = "goto_next_buffer"
+
+
+[keys.insert]
+"A-x" = "normal_mode" # Maps Alt-X to enter normal mode
+j = { k = "normal_mode" } # Maps `jk` to exit insert mode

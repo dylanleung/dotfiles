@@ -1,0 +1,2 @@
+# ~/.dotfiles/.rcrc
+excludes = [ "Brewfile", "README", "LICENSE" ]

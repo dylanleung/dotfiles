@@ -1,0 +1,60 @@
+
+[cursor]
+vi_mode_style = "None"
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+
+
+[font]
+size = 16
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[hints]
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t@="
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+dynamic_title = true
+opacity = 0.9
+option_as_alt = "Both"
+
+[window.padding]
+x = 10
+y = 15
+
+[general]
+live_config_reload = true
+import = ["/Users/dylan/.config/alacritty/themes/themes/tokyo-night-storm.toml"]
+
+[terminal]
+
+
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-l", "-c", "tmux new-session -A -D -s main"]
