@@ -1,0 +1,2 @@
+# 优先语言列表，按顺序尝试获取
+display_languages = ["zh", "en"]

@@ -1,4 +1,10 @@
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+# --- 核心！解决 brew update 和安装时卡在 API 的问题 ---
+export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
+# --- 核心！加速二进制包下载 ---
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+
+# 关闭自动更新
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 zstyle ':zim:zmodule' use 'degit'
 
@@ -11,6 +17,12 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} 
 fi
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
+
+# 1. 只有当 TERM_PROGRAM 为 "ghostty" 且不在 tmux/ZMX 中时才执行
+# if [ -n "$GHOSTTY_RESOURCES_DIR" ] && [ -z "$ZMX_SESSION" ]; then
+#     # 2. 尝试连接到 "main" 会话，如果不存在则创建它
+#     zmx attach main 2>/dev/null || zmx attach main
+# fi
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
@@ -29,7 +41,6 @@ alias typora="open -a typora"
 
 alias lg="lazygit"
 
-alias cm="chezmoi"
 
 #fd
 alias fda='fd -IH'
@@ -44,4 +55,7 @@ alias rr="exec zsh"
 eval "$(mcfly init zsh)"
 
 
-source /Users/dylan/.config/broot/launcher/bash/br
+eval "$(zoxide init zsh)"
+
+
+eval "$(fzf --zsh)"

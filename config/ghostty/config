@@ -1,0 +1,79 @@
+# ============================================================
+# Ghostty 配置 - 从 Alacritty 迁移而来
+# 文件位置: ~/.config/ghostty/config
+# ============================================================
+
+# Ghostty 内置主题名称，直接指定即可
+theme = "Gruvbox Material Dark"
+
+# --- 字体 ---
+# 实际渲染时会自动使用字体的粗体/斜体变体
+font-family = "JetBrainsMono Nerd Font"
+font-size = 16
+
+# --- 光标 ---
+cursor-style = "block"
+cursor-style-blink = false
+
+# 关键：禁用 Ghostty 默认的 Shell 集成光标控制，确保上面的 block 光标生效
+shell-integration-features = "no-cursor"
+
+# --- 窗口装饰与内边距 ---
+window-decoration = "none"
+
+window-padding-x = 10
+window-padding-y = 15
+
+# 背景透明度 (0.9 = 90% 不透明，10% 透明)
+background-opacity = 0.9
+
+# 可选：背景模糊 (Alacritty 不支持，Ghostty 支持，若不喜欢可删除)
+# background-blur-radius = 20
+
+# --- 滚动历史 ---
+scrollback-limit = 10000
+
+# --- 鼠标 ---
+# 打字时隐藏鼠标
+mouse-hide-while-typing = true
+
+# --- 选择即复制 (Alacritty: save_to_clipboard = true) ---
+copy-on-select = true
+
+
+# --- 窗口状态保存 (额外添加：重启后恢复窗口位置/大小) ---
+window-save-state = "always"
+
+
+# --- 关键：解决 macOS 下 Option 键作为 Alt (Helix 需要) ---
+# 将左侧 Option 键作为 Alt 使用 (避免与特殊字符输入冲突)
+macos-option-as-alt = "left"
+
+# --- 可选：调整单元格宽高让文字呼吸感 ---
+adjust-cell-height = 10%
+adjust-cell-width = -5%
+# 禁用关闭当前标签页/分屏时的确认提示
+confirm-close-surface = false
+
+shell-integration = "zsh"
+
+# 禁用快捷键
+
+# 屏蔽新建标签页 (Cmd+T)
+keybind = cmd+t=ignore
+# 屏蔽垂直分屏 (Cmd+D)
+keybind = cmd+d=ignore
+# 屏蔽水平分屏 (Cmd+Shift+D)
+keybind = cmd+shift+d=ignore
+# 屏蔽新建窗口 (Cmd+N)
+keybind = cmd+n=ignore
+
+# 可选：屏蔽切换标签页的快捷键，让你能专注于 tmux
+keybind = cmd+shift+[=ignore
+keybind = cmd+shift+]=ignore
+keybind = ctrl+tab=ignore
+keybind = ctrl+shift+tab=ignore
+keybind = cmd+[=ignore
+keybind = cmd+]=ignore
+
+command = /opt/homebrew/bin/tmux new-session -A -s main

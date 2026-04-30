@@ -11,6 +11,8 @@ zmodule git-info
 zmodule duration-info
 
 
+zmodule archive
+zmodule fzf
 zmodule exa
 zmodule prompt-pwd
 zmodule asciiship

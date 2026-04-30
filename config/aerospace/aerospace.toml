@@ -42,22 +42,10 @@ preset = 'qwerty'
 [mode.main.binding]
 
 # --- 4.1 一键启动应用并切换到工作区（数组形式）---
-alt-a = [
-    'exec-and-forget open -a "Visual Studio Code"',
-    'workspace A',
-]
-alt-s = [
-    'exec-and-forget open -a Alacritty',
-    'workspace S',
-]
-alt-d = [
-    'exec-and-forget open -a Logseq',
-    'workspace D',
-]
-alt-f = [
-    'exec-and-forget open -a "Google Chrome"',
-    'workspace F',
-]
+alt-a = ['exec-and-forget open -a "Visual Studio Code"', 'workspace A']
+# alt-s = ['exec-and-forget open -a Alacritty', 'workspace S']
+alt-s = ['exec-and-forget open -a Ghostty', 'workspace S']
+alt-d = ['exec-and-forget open -a "Google Chrome"', 'workspace F']
 
 # --- 4.2 仅切换工作区（使用 Alt+Shift+字母，避免与移动窗口冲突）---
 # 注意：Alt+Shift+A 原本用于“移动窗口到工作区 A”，这里改用 Alt+Ctrl+A 作为纯切换
@@ -86,10 +74,10 @@ alt-shift-4 = 'move-node-to-workspace 4'
 alt-shift-5 = 'move-node-to-workspace 5'
 
 # --- 4.4 窗口焦点移动（Vim 风格）---
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+#alt-h = 'focus left'
+#alt-j = 'focus down'
+#alt-k = 'focus up'
+#alt-l = 'focus right'
 
 # --- 4.5 同一工作区内移动窗口位置 ---
 alt-shift-h = 'move left'
@@ -101,7 +89,7 @@ alt-shift-enter = '''exec-and-forget ~/.bin/setup_dev_env.sh'''
 
 # --- 4.6 布局模式切换 ---
 # 循环切换平铺/手风琴/浮动
-alt-slash = 'layout tiles horizontal vertical accordion'
+alt-ctrl-slash = 'layout tiles horizontal vertical accordion'
 # 直接切换到平铺
 alt-ctrl-t = 'layout tiles'
 # 直接切换到浮动（0.20.3-Beta 中 layout floating 有效，后面不加 tiling）
@@ -129,25 +117,23 @@ alt-shift-comma = 'move-node-to-monitor prev'
 # ==========================================
 [[on-window-detected]]
 if.app-name-regex-substring = 'Code'
-run = ['layout tiles', 'move-node-to-workspace A']
+run = ['layout floating', 'move-node-to-workspace A']
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'Alacritty'
-run = ['layout tiles', 'move-node-to-workspace S']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Logseq'
-run = ['layout floating', 'move-node-to-workspace D']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Google Chrome'
 run = ['layout floating', 'move-node-to-workspace F']
 
+# 为 Ghostty 主窗口设置默认布局规则
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = ["layout floating", "move-node-to-workspace S"]
+
 # ==========================================
 # 6. 可选：工作区绑定到显示器（取消注释并修改数字）
 # ==========================================
 [workspace-to-monitor-force-assignment]
- "A" = 1
- "S" = 2
- "D" = 2
- "F" = 1
+"A" = 1
+"S" = 2
+"D" = 2
+"F" = 1
